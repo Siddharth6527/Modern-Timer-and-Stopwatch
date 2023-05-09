@@ -1,193 +1,342 @@
-"use strict";
+/* 
 
-const lengthArray = [];
-var result;
-var active;
-var fromMonthValue;
-var fromTimeValue;
-var fromDateValue;
-var fromYearValue;
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 
-var fromSecsValue;
+- Spacing System (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
 
-/////////////////////////////////////////////////////////////
-// Functions
-/////////////////////////////////////////////////////////////
+* {
+  color: #f1f3f5;
+  font-size: 2.4rem;
+  transition: all 0.3s;
+}
 
-var countDownDate;
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-// var countDownDate = new Date("May 10, 2023 00:00:00").getTime();
+.container {
+  padding: 0;
+  margin: 0;
+  background-color: rgba(128, 128, 128, 0.329);
+  border-radius: 8px;
+  height: 100vh;
+}
 
-const todayMonth = new Date().getMonth();
-const todayDate = new Date().getDate();
-const todayYear = new Date().getFullYear();
-const todayMinutes = new Date().getMinutes();
-const inputBox = document.querySelector(".units-option");
+.option--inactive {
+  display: none;
+}
+.option--active {
+  opacity: 100;
+}
 
-////////////////////////////////////////////////////////////////
-var myfunc;
-var buttonSetEl = document.querySelector(".btn--set");
-buttonSetEl.addEventListener("click", function (e) {
-  e.preventDefault();
+body {
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background: radial-gradient(circle at 6.6% 12%, rgb(64, 0, 126) 40%, #00ffa0);
+}
 
-  fromTimeValue = document.getElementById("from-value--time").value;
-  fromDateValue = document.getElementById("from-value--date").value;
-  fromMonthValue = document.getElementById("from-value--month").value;
-  fromYearValue = document.getElementById("from-value--year").value;
+header {
+  font-family: "Rubik", sans-serif !important;
+  background-color: rgb(0, 0, 0);
+  padding: 2.4rem;
+  text-transform: uppercase;
+  border-radius: 8px;
+}
 
-  inputBox.classList.add("option--inactive");
+header h1 {
+  color: #ced4da;
+}
 
-  var countDownDate = new Date(
-    `${fromMonthValue} ${fromDateValue}, ${fromYearValue} ${fromTimeValue}`
+.heading--gradient {
+  position: absolute;
+  top: 2.8%;
+  background: linear-gradient(
+    90deg,
+    #ff00f3,
+    #0033ff,
+    rgb(0, 255, 160),
+    #ff0000,
+    #ff00c4,
+    #ffff00,
+    #ff0000
   );
+  background-size: 400%;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 
-  myfunc = setInterval(function () {
-    var now = new Date().getTime();
-    var timeleft = countDownDate - now;
+.bottom {
+  padding-top: 3.4rem;
+}
 
-    var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-    var hours = Math.floor(
-      (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+.heading-primary {
+  background-color: rgb(0, 0, 0);
+}
 
-    document.getElementById("days").innerHTML = String(days).padStart(2, "0");
-    document.getElementById("hours").innerHTML = String(hours).padStart(2, "0");
-    document.getElementById("minutes").innerHTML = String(minutes).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("seconds").innerHTML = String(seconds).padStart(
-      2,
-      "0"
-    );
+.main-nav {
+  display: inline-block;
+  padding-right: 5.4rem;
+  transition: all 0.6s;
+}
 
-    if (timeleft < 0) {
-      alert("Timer Over!⏱️");
-      clearInterval(myfunc);
-      document.getElementById("days").innerHTML = "";
-      document.getElementById("hours").innerHTML = "";
-      document.getElementById("minutes").innerHTML = "";
-      document.getElementById("seconds").innerHTML = "";
-    }
-  }, 1000);
-});
+.adding-border {
+  border-radius: 8px;
+}
 
-let timerResetBtn = document.querySelector(".button--reset--timer");
+.option {
+  width: 70rem;
+  transition: all 1s;
+}
 
-timerResetBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  console.log("H!!!!!!!!!!!!!!");
+.main-nav-list div p {
+  padding: 2.4rem 2.4rem;
+  font-weight: 300;
+  font-size: 2.4rem;
+  color: #ffe066;
+  background-color: black;
+  text-align: center;
+  transition: all 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
-  clearInterval(myfunc);
-  document.getElementById("days").innerHTML = "00";
-  document.getElementById("hours").innerHTML = "00";
-  document.getElementById("minutes").innerHTML = "00";
-  document.getElementById("seconds").innerHTML = "00";
-});
+.main-nav-list div p:hover {
+  cursor: pointer;
+  background-color: #e03131;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.705);
+}
 
-//////////////////////////////////////////////////////
-// Making navigation buttons work
-//////////////////////////////////////////////////////
+main {
+  display: flex;
+  justify-content: center;
+}
 
-// Selecting buttons
-let timerBtn = document.querySelector(".button--timer");
-let stopwatchBtn = document.querySelector(".button--stopwatch");
+.menu {
+  background-color: black;
+}
 
-// Selecting sections
-let timerOption = document.querySelector(".option--timer");
-let stopwatchOption = document.querySelector(".option--stopwatch");
+.label-padding {
+  padding-right: 2.4rem;
+}
 
-timerBtn.addEventListener("click", function () {
-  timerOption.classList.remove("option--inactive");
-  stopwatchOption.classList.add("option--inactive");
+.units-option {
+  padding: 3.2rem;
+  background-color: black;
+  border-radius: 10px;
+  margin-top: 3.2rem;
 
-  active = 0;
-});
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
-/////////////////////////////////////////////////////
-// STOPWATCH SECTION
-/////////////////////////////////////////////////////
+label {
+  background-color: black;
+  color: #ffe066;
+}
 
-var secsSW = 0;
-var minsSW = 0;
-var hrsSW = 0;
+.options {
+  background-color: black;
+  color: #ffe066;
+}
 
-const resultEl = document.querySelector("face--timer");
-const optionEl = document.querySelector("option");
-const startBtn = document.querySelector(".button--start");
-const resetBtnSW = document.querySelector(".button--reset--stopwatch");
+.units-option:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
-stopwatchBtn.addEventListener("click", function () {
-  timerOption.classList.add("option--inactive");
-  stopwatchOption.classList.remove("option--inactive");
-  active = 1;
-});
+.inputs-result:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
-var myInterval;
+.units-option p {
+  background-color: black;
+  color: #ffe066;
+}
 
-startBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-  myInterval = setInterval(function () {
-    secsSW += 1;
-    if (secsSW > 59) {
-      secsSW = 0;
-      minsSW++;
-    }
-    if (minsSW > 59) {
-      minsSW = 0;
-      hrsSW++;
-    }
+.menu div {
+  background-color: black;
+}
 
-    document.getElementById("hours--sw").innerHTML = String(hrsSW).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("minutes--sw").innerHTML = String(minsSW).padStart(
-      2,
-      "0"
-    );
-    document.getElementById("seconds--sw").innerHTML = String(secsSW).padStart(
-      2,
-      "0"
-    );
-  }, 1000);
-});
+.inputs-result {
+  background-color: black;
+  padding: 3.2rem;
+  border-radius: 10px;
+  margin-top: 3.2rem;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-resetBtnSW.addEventListener("click", function (e) {
-  e.preventDefault();
-  console.log("Helloooooo");
-  clearInterval(myInterval);
-  hrsSW = 0;
-  minsSW = 0;
-  secsSW = 0;
+  padding-bottom: 6.8rem;
+}
 
-  document.getElementById("hours--sw").innerHTML = String(hrsSW).padStart(
-    2,
-    "0"
-  );
-  document.getElementById("minutes--sw").innerHTML = String(minsSW).padStart(
-    2,
-    "0"
-  );
-  document.getElementById("seconds--sw").innerHTML = String(secsSW).padStart(
-    2,
-    "0"
-  );
-});
+.inputs-result p {
+  color: #ffe066;
+  background-color: black;
+}
 
-// MADE BY: Siddharth Verma
+.inputs-result div {
+  background-color: black;
+}
+
+input {
+  background-color: black;
+}
+
+form {
+  background-color: black;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu--from {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.8rem;
+}
+
+button {
+  border: none;
+  background-color: #e03131;
+  color: #1b1f22;
+  font-weight: 600;
+  padding: 0.6rem 5.4rem;
+  border-radius: 5px;
+  /* position: absolute; */
+
+  transition-duration: 0.6s;
+}
+
+button:hover {
+  background-color: #ff6b6b;
+}
+
+.inputs-result label {
+  padding-right: 2.4rem;
+}
+
+/* STYLING SELECT */
+select {
+  width: 20rem;
+  color: #f1f3f5;
+  background-color: #343a40;
+  padding: 0.1rem 0.2rem;
+  font-size: 2rem;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+
+select:hover {
+  box-shadow: red 0px 5px 30px;
+}
+
+select option {
+  font-size: 2rem;
+  color: #f1f3f5;
+}
+
+input {
+  color: #f1f3f5;
+  background-color: #343a40;
+  padding: 0.1rem 0.2rem;
+  font-size: 2rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+input:hover {
+  box-shadow: red 0px 5px 30px;
+  border: 2px solid grey;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-weight: 550;
+}
+
+.units-label {
+  font-size: 3rem;
+}
+
+.footer-details {
+  color: #dee2e6;
+  position: absolute;
+  top: 160px;
+  right: 22px;
+  font-size: 1.6rem;
+}
+
+.copyright {
+  color: #dee2e6a9;
+  position: absolute;
+  top: 140px;
+  right: 22px;
+  font-size: 1.6rem;
+}
+
+.clock-keyword--label {
+  font-size: 3rem;
+}
+
+.watch--numbers {
+  display: flex;
+  padding: 0;
+}
+
+.watch--numbers p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.918);
+
+  font-size: 3rem;
+}
+
+.watch-buttons {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.bigger-font {
+  font-size: 5rem !important;
+}
+
+.yellow-font {
+  color: #ffe066 !important;
+}
+
+.padding-right {
+  padding-right: 2.4rem;
+}
+
+.padding-fix {
+  padding-right: 0.8rem;
+}
+
+.watch--buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.option--stopwatch {
+  width: 70rem;
+}
+
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* 
+<!-- MADE BY: Siddharth Verma -->
+<!-- Don't claim as your own --> */
