@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="description" content="Modern Unit Convertor" />
+
+    <!-- Adding favicon -->
+
+    <!-- Adding font for clock-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Adding font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Adding favicon -->
+    <link rel="icon" href="icons8-timer-96.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Linking othe files -->
+    <link rel="stylesheet" href="general.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>MODERN Timer & Stopwatch</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="heading heading-primary heading--gradient">Modern</h1>
+        <!-- <br /> -->
+        <h1 class="heading heading-primary bottom">Stopwatch & Timer</h1>
+        <!-- <nav class="main-nav"></nav> -->
+      </header>
+      <main>
+        <!-- Code for navigation buttons -->
+        <div>
+          <nav class="main-nav">
+            <ul class="main-nav-list">
+              <div>
+                <p class="adding-border button--timer">⏳TIMER</p>
+              </div>
+              <div>
+                <p class="adding-border button--stopwatch">⏱️STOPWATCH</p>
+              </div>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Code for timer  -->
+        <div class="option option--timer">
+          <section id="timer--menu" class="units-option menu--timer">
+            <!-- Add inactive in the above class -->
+            <section class="options">
+              <p class="units-label">Set Timer:</p>
+              <div class="menu">
+                <!-- Taking hours input -->
+                <div class="menu menu--from input--hrs">
+                  <label class="label-padding" for="from-unit unit--hrs"
+                    >Time:</label
+                  >
+                  <input
+                    id="from-value--time"
+                    type="string"
+                    placeholder="e.g. 16: 37: 52"
+                  />
+                </div>
+                <div class="menu menu--from input--hrs">
+                  <label class="label-padding" for="from-unit unit--hrs"
+                    >Date:</label
+                  >
+                  <input
+                    id="from-value--date"
+                    type="number"
+                    placeholder="e.g. 11"
+                  />
+                </div>
+                <!-- Taking mins input -->
+
+                <div class="menu menu--from input--mins">
+                  <label class="label-padding" for="from-unit unit--min"
+                    >Month</label
+                  >
+                  <input
+                    id="from-value--month"
+                    type="number"
+                    placeholder="e.g. 05 (May)"
+                  />
+                </div>
+                <!-- Taking seconds input -->
+                <div class="menu menu--from input--secs">
+                  <label class="label-padding" for="from-unit unit--min"
+                    >Year:</label
+                  >
+                  <input
+                    id="from-value--year"
+                    type="number"
+                    placeholder="e.g. 2023"
+                  />
+                </div>
+                <button class="btn--set">Set</button>
+              </div>
+            </section>
+          </section>
+
+          <!-- Time section ended -->
+
+          <section
+            id-="timer-clock"
+            class="inputs-result watch--face face--timer"
+          >
+            <p class="clock-keyword--label">Timer Clock:</p>
+            <div class="watch--numbers">
+              <!-- <p id="days" class="digits--days">00</p>
+              <p>:</p> -->
+              <p id="days" class="digits--days bigger-font padding-fix">00</p>
+              <p class="yellow-font padding-right">Days</p>
+              <p id="hours" class="digits--hrs bigger-font padding-fix">00</p>
+              <p class="yellow-font padding-right">Hrs</p>
+              <p id="minutes" class="digits--mins bigger-font padding-fix">
+                00
+              </p>
+              <p class="yellow-font padding-right">Mins</p>
+              <p id="seconds" class="digits--secs bigger-font padding-fix">
+                00
+              </p>
+              <p class="yellow-font padding-right">Secs</p>
+            </div>
+            <div class="watch--buttons">
+              <!-- <button>Stop</button> -->
+              <button class="button--reset--timer">Reset</button>
+            </div>
+          </section>
+        </div>
+
+        <!-- code for stopwatch -->
+        <div class="option--stopwatch option--inactive">
+          <section
+            id-="timer-clock"
+            class="inputs-result watch--face face--stopwatch"
+          >
+            <p class="clock-keyword--label">Stopwatch:</p>
+            <div class="watch--numbers">
+              <p
+                id="hours--sw"
+                class="digits--hrs--stopwatch bigger-font padding-fix"
+              >
+                00
+              </p>
+              <p class="yellow-font padding-right">Hrs</p>
+              <p
+                id="minutes--sw"
+                class="digits--mins--stopwatch bigger-font padding-fix"
+              >
+                00
+              </p>
+              <p class="yellow-font padding-right">Mins</p>
+              <p
+                id="seconds--sw"
+                class="digits--secs--stopwatch bigger-font padding-fix"
+              >
+                00
+              </p>
+              <p class="yellow-font padding-right">Secs</p>
+            </div>
+            <div class="watch--buttons">
+              <button class="button--start">Start</button>
+              <button class="button--reset--stopwatch">Reset</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <p class="footer-details">Made with❣️by Siddharth Verma</p>
+    <p class="footer-deails copyright">&copy;All rights reserved</p>
+    <script defer src="script.js"></script>
+  </body>
+</html>
+
+<!-- MADE BY: Siddharth Verma -->
+<!-- Don't claim as your own -->
